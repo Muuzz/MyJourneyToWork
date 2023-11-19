@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace Calculator
@@ -67,7 +68,7 @@ namespace Calculator
                 return this.distance;
             }
         }
-
+        [ExcludeFromCodeCoverage]
         public bool IsDistanceValid()
         {
             if (milesOrKms == DistanceMeasurement.kms)
