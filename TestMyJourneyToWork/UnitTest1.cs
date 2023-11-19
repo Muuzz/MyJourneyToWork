@@ -236,6 +236,46 @@ namespace TestMyJourneyToWork
             Assert.IsTrue(actualDistanceMaxKms > actualDistanceMinKms, "distanceMaxKms should be greater than distanceMinKms.");
         }
 
+        [TestMethod]
+        public void EnvirementMessage_ShouldReturnCorrectMessage_WhenSustainabilityWeightingIsBelow150()
+        {
+            // Arrange
+            Calculator calculator = new Calculator
+            {
+                distance = 10,
+                milesOrKms = DistanceMeasurement.kms,
+                numDays = 2,
+                transportMode = TransportModes.walking
+            };
+
+            // Act
+            string actualMessage = calculator.EnvirementMessage;
+
+            // Assert
+            string expectedMessage = "Thank you for being environmentally friendly.";
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
+        [TestMethod]
+        public void EnvirementMessage_ShouldReturnCorrectMessage_WhenSustainabilityWeightingIsAbove150()
+        {
+            // Arrange
+            Calculator calculator = new Calculator
+            {
+                distance = 1000,
+                milesOrKms = DistanceMeasurement.miles,
+                numDays = 5,
+                transportMode = TransportModes.petrol
+            };
+
+            // Act
+            string actualMessage = calculator.EnvirementMessage;
+
+            // Assert
+            string expectedMessage = "Please use more carbon-friendly transport.";
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
+
+
     }
 
 }

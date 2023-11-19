@@ -133,7 +133,43 @@ namespace Calculator
                 {
                     total = transportModeWeighting[(int)TransportModes.walking] * convertDistance() * (this.numDays * 2);
                 }
+
+
                 return total;
+            }
+        }
+        public class SustainabilityMessagePrinter
+        {
+            public void PrintMessage(double sustainabilityWeighting)
+            {
+                if (sustainabilityWeighting > 150)
+                {
+                    Console.WriteLine("Please use more carbon-friendly transport.");
+                }
+                else
+                {
+                    Console.WriteLine("Thank you for being environmentally friendly.");
+                }
+            }
+        }
+        [DisplayName("Carbon friendly check:")]
+        public String EnvirementMessage
+        {
+
+            get
+            {
+                string message;
+                if (sustainabilityWeighting > 150)
+                {
+                    message = "Please use more carbon-friendly transport.";
+                }
+                else
+                {
+                    message = "Thank you for being environmentally friendly.";
+                }
+
+
+                return message;
             }
         }
     }
