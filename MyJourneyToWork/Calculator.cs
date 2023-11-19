@@ -139,8 +139,10 @@ namespace Calculator
                 return total;
             }
         }
+        [ExcludeFromCodeCoverage]
         public class SustainabilityMessagePrinter
         {
+            [ExcludeFromCodeCoverage]
             public void PrintMessage(double sustainabilityWeighting)
             {
                 if (sustainabilityWeighting > 150)
@@ -153,6 +155,7 @@ namespace Calculator
                 }
             }
         }
+        [ExcludeFromCodeCoverage]
         [DisplayName("Carbon friendly check:")]
         public String EnvirementMessage
         {

@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace AcceptanceTests.StepDefinitions
 {
     [Binding]
@@ -18,6 +20,7 @@ namespace AcceptanceTests.StepDefinitions
         }
 
         [Given("the second number is (.*)")]
+        [ExcludeFromCodeCoverage]
         public void GivenTheSecondNumberIs(int number)
         {
             //TODO: implement arrange (precondition) logic
@@ -26,6 +29,7 @@ namespace AcceptanceTests.StepDefinitions
         }
 
         [When("the two numbers are added")]
+        [ExcludeFromCodeCoverage]
         public void WhenTheTwoNumbersAreAdded()
         {
             //TODO: implement act (action) logic
@@ -34,6 +38,7 @@ namespace AcceptanceTests.StepDefinitions
         }
 
         [Then("the result should be (.*)")]
+        [ExcludeFromCodeCoverage]
         public void ThenTheResultShouldBe(int result)
         {
             //TODO: implement assert (verification) logic
