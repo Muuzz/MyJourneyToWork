@@ -207,7 +207,34 @@ namespace TestMyJourneyToWork
             // Assert
             Assert.AreEqual(12.427423844746679, sustainabilityWeighting);
         }
+        [TestMethod]
+        public void DistanceMinMiles_ShouldBeGreaterThanZero()
+        {
+            // Act
+            double actualDistanceMinMiles = Calculator.distanceMinMiles;
 
+            // Assert
+            Assert.IsTrue(actualDistanceMinMiles > 0, "distanceMinMiles should be greater than zero.");
+        }
+        [TestMethod]
+        public void DistanceMinKms_ShouldBeGreaterThanZero()
+        {
+            // Act
+            double actualDistanceMinKms = Calculator.distanceMinKms;
+
+            // Assert
+            Assert.IsTrue(actualDistanceMinKms > 0, "distanceMinKms should be greater than zero.");
+        }
+        [TestMethod]
+        public void DistanceMaxKms_ShouldBeGreaterThanDistanceMinKms()
+        {
+            // Act
+            double actualDistanceMinKms = Calculator.distanceMinKms;
+            double actualDistanceMaxKms = Calculator.distanceMaxKms;
+
+            // Assert
+            Assert.IsTrue(actualDistanceMaxKms > actualDistanceMinKms, "distanceMaxKms should be greater than distanceMinKms.");
+        }
 
     }
 

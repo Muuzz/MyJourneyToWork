@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
@@ -32,12 +33,14 @@ namespace Calculator
     {
         private List<double> transportModeWeighting = new List<double> { 8, 10, 6, 4, 3, 2, 3, 3, 3, 0.005, 0.005 };
 
-        public const int distanceMin = 1;
-        public const int distanceMax = 1000;
+        public const double distanceMinMiles = 1;
+        public const double distanceMaxMiles = 1000;
+        public const double distanceMinKms = 1;
+        public const double distanceMaxKms = 1609.344; // Approximately 1000 miles in kilometers
 
-        [Range(distanceMin, distanceMax, ErrorMessage = "Invalid distance - Only Available from 1 to 1000 miles")]
         [DisplayName("Enter Your Distance to work (KMs/miles):")]
         public double distance { get; set; }
+
 
         [DisplayName("Select A Distance Measurement:")]
         public DistanceMeasurement milesOrKms { get; set; }
@@ -55,10 +58,26 @@ namespace Calculator
         //Ensure that distance is in miles for calculation
         private double convertDistance()
         {
-            if (milesOrKms.Equals(DistanceMeasurement.kms))
-                return this.distance / 1.609344;
+            if (milesOrKms == DistanceMeasurement.kms)
+            {
+                return this.distance / 1.609344; // Convert kilometers to miles
+            }
             else
+            {
                 return this.distance;
+            }
+        }
+
+        public bool IsDistanceValid()
+        {
+            if (milesOrKms == DistanceMeasurement.kms)
+            {
+                return distance >= distanceMinKms && distance <= distanceMaxKms;
+            }
+            else
+            {
+                return distance >= distanceMinMiles && distance <= distanceMaxMiles;
+            }
         }
 
         // calculate sustainability number
@@ -72,7 +91,7 @@ namespace Calculator
 
                 if (transportMode.Equals(TransportModes.petrol))
                 {
-                    total = transportModeWeighting[(int)TransportModes.petrol] * convertDistance() * (this.numDays*2);
+                    total = transportModeWeighting[(int)TransportModes.petrol] * convertDistance() * (this.numDays * 2);
                 }
                 else if (transportMode.Equals(TransportModes.deisel))
                 {
