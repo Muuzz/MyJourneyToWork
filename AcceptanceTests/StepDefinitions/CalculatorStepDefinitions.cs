@@ -1,48 +1,37 @@
-using System.Diagnostics.CodeAnalysis;
+using System;
+using TechTalk.SpecFlow;
 
 namespace AcceptanceTests.StepDefinitions
 {
     [Binding]
-    public sealed class CalculatorStepDefinitions
+    public class CalculatorStepDefinitions
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
+        private object calculator;
+        private ReadOnlySpan<char> distance;
 
-        [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
+        [Given(@"I have a calculator")]
+        public void GivenIHaveACalculator()
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            throw new PendingStepException();
+            calculator = new Calculator();
         }
 
-        [Given("the second number is (.*)")]
-        [ExcludeFromCodeCoverage]
-        public void GivenTheSecondNumberIs(int number)
+        [Given(@"I set the distance to ""([^""]*)"" kilometers")]
+        public void GivenISetTheDistanceToKilometers(string p0)
         {
-            //TODO: implement arrange (precondition) logic
+            if (calculator == null)
+            {
+                calculator = new Calculator();
+            }
 
-            throw new PendingStepException();
+            if (double.TryParse(distance, out double distanceValue))
+            {
+                calculator.distance = distanceValue;
+            }
         }
 
-        [When("the two numbers are added")]
-        [ExcludeFromCodeCoverage]
-        public void WhenTheTwoNumbersAreAdded()
+        [Then(@"the carbon-friendly message should be ""([^""]*)""")]
+        public void ThenTheCarbon_FriendlyMessageShouldBe(string p0)
         {
-            //TODO: implement act (action) logic
-
-            throw new PendingStepException();
-        }
-
-        [Then("the result should be (.*)")]
-        [ExcludeFromCodeCoverage]
-        public void ThenTheResultShouldBe(int result)
-        {
-            //TODO: implement assert (verification) logic
-
             throw new PendingStepException();
         }
     }

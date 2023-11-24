@@ -7,7 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyJourneyToWork", "MyJourne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMyJourneyToWork", "TestMyJourneyToWork\TestMyJourneyToWork.csproj", "{EC859314-8B84-4B4E-BC82-C621EFF4E665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTests", "AcceptanceTests\AcceptanceTests.csproj", "{E80599BE-A173-47D1-B983-D28B249A926C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcceptanceTests", "AcceptanceTests\AcceptanceTests.csproj", "{E80599BE-A173-47D1-B983-D28B249A926C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AE68DDD0-2411-45F0-93F8-17BB36E9877F} = {AE68DDD0-2411-45F0-93F8-17BB36E9877F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
